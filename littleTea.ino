@@ -74,7 +74,11 @@ void startBrew() {
   }
 
   analogWrite(dialPin, onVal);
-  delay(brewingTime * 1000);
+
+  // brew the tea!
+  for (int i = 0; i < brewingTime; i++) {
+    delay(1000);
+  }
 
   // gradual removal of teabag
   int steps = 30;
