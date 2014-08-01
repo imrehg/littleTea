@@ -1,4 +1,4 @@
-/* 
+/*
  * littleTea: tea brewing timer
  *
  * Part of the Instructables littleBits build night with the Taipei Hackerspace
@@ -27,10 +27,10 @@ void setup() {
   pinMode(buttonPin, INPUT);
   pinMode(buzzerPin, OUTPUT);
   pinMode(buttonPowerPin, OUTPUT);
-  
+
   analogWrite(dialPin, offVal);
   digitalWrite(buttonPowerPin, HIGH);
-  
+
   if (Serial) {   /* needed by the Leonardo types */
     Serial.begin(115200);
   }
@@ -44,10 +44,10 @@ void loop() {
   if (reading != lastButtonState) {
     // reset the debouncing timer
     lastDebounceTime = millis();
-  } 
+  }
 
   Serial.println(lastButtonState);
-  
+
   if ((millis() - lastDebounceTime) > debounceDelay) {
     // whatever the reading is at, it's been there for longer
     // than the debounce delay, so take it as the actual current state:
@@ -88,7 +88,7 @@ void startBrew() {
     delay(100);
   }
   analogWrite(dialPin, offVal);
-  
+
   if (doBuzz) {
     digitalWrite(buzzerPin, HIGH);
     delay(200);
@@ -98,30 +98,4 @@ void startBrew() {
     delay(200);
     digitalWrite(buzzerPin, LOW);
   }
-}
-//  int cmdByte;
-//  
-//  if (Serial.available() > 0) {
-//    cmdByte = Serial.read();
-//    
-//    if (cmdByte == 255) {
-//      /* sound buzzer */
-//      siren();
-//    } else {
-//      /* set display to appropriate value */   
-//      analogWrite(dialPin, cmdByte);
-//    }
-//    Serial.println(cmdByte, DEC);
-//  }    
-
-
-/* Beeps to sound te buzzer*/
-void siren() {
-  digitalWrite(buzzerPin, HIGH);
-  delay(200);
-  digitalWrite(buzzerPin, LOW);
-  delay(1000);
-  digitalWrite(buzzerPin, HIGH);
-  delay(200);
-  digitalWrite(buzzerPin, LOW);  
 }
