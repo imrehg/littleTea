@@ -73,6 +73,7 @@ void startBrew() {
     digitalWrite(buzzerPin, LOW);
   }
 
+  // dip teabag
   analogWrite(dialPin, onVal);
 
   // brew the tea!
